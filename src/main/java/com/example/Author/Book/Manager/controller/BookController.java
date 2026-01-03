@@ -1,0 +1,55 @@
+package com.example.Author.Book.Manager.controller;
+
+import com.example.Author.Book.Manager.model.Book;
+import com.example.Author.Book.Manager.service.BookService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/books")
+public class BookController {
+
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
+    @GetMapping
+    public List<Book> getAll() {
+        return bookService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Book get(@PathVariable Long id) {
+        return bookService.findById(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<String> create(@RequestBody Book book) {
+        try {
+            bookService.insert(book);
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body("Book created successfully");
+        } catch (Exception error) {
+            throw new Error(error);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Book book) {
+        book.setId(id);
+        bookService.update(book);
+        return ResponseEntity.ok("Book updated successfully");
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        bookService.delete(id);
+        return ResponseEntity.ok("The book has been deleted");
+    }
+}
