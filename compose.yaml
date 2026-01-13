@@ -14,15 +14,12 @@ services:
     ports:
       - "8081:8081"
     restart: unless-stopped
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/postgres
-#      - SPRING_DATASOURCE_USERNAME=postgres
-#      - SPRING_DATASOURCE_PASSWORD=phing12345
-
+    # Local development - using Railway database
+    # For Railway deployment, DATABASE_URL will be automatically provided
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://turntable.proxy.rlwy.net:16027/railway?sslmode=require
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=QqzoBHXFKbChWNhRudMhVfPeLHYLDgtd
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL:-jdbc:postgresql://turntable.proxy.rlwy.net:16027/railway?sslmode=require}
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME:-postgres}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD:-QqzoBHXFKbChWNhRudMhVfPeLHYLDgtd}
 
 
 # The commented out section below is an example of how to define a PostgreSQL
