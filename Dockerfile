@@ -6,7 +6,7 @@ COPY --chmod=0755 mvnw mvnw
 COPY .mvn/ .mvn/
 
 RUN --mount=type=bind,source=pom.xml,target=pom.xml \
-    ./mvnw dependency:go-offline -DskipTests
+    --mount=type=cache,id=maven-cache,target=/root/.m2 ./mvnw dependency:go-offline -DskipTests
 
 FROM deps AS package
 
@@ -14,6 +14,7 @@ WORKDIR /build
 
 COPY ./src src/
 RUN --mount=type=bind,source=pom.xml,target=pom.xml \
+    --mount=type=cache,id=maven-cache,target=/root/.m2 \
     ./mvnw package -DskipTests && \
     mv target/$(./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout)-$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout).jar target/app.jar
 
