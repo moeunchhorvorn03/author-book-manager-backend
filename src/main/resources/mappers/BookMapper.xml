@@ -8,7 +8,14 @@
             id,
             title,
             author_id AS authorId,
-            published_year AS publishedYear
+            published_year AS publishedYear,
+            author,
+            price,
+            rating,
+            category,
+            cover_image AS coverImage,
+            description,
+            is_best_seller AS isBestSeller
         FROM books;
     </select>
     <select id="findById">

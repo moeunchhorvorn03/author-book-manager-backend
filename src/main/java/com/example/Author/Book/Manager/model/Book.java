@@ -16,4 +16,18 @@ public class Book {
     private Long authorId;
 
     private String publishedYear;
+
+    private String author;
+
+    private float price;
+
+    private float rating;
+
+    private String category;
+
+    private String coverImage;
+
+    private String description;
+
+    private boolean is_best_seller;
 }
