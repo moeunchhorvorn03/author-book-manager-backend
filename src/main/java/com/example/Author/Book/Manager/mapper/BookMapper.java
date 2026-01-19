@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface BookMapper {
-    List<Book> findAll();
+    List<Book> findAll(String category);
     List<Book> findByAuthorId(Long authorId);
     Book findById(Long id);
     void insert(Book book);

@@ -20,8 +20,8 @@ public class BookServiceImpl implements BookService {
         this.bookMapper = bookMapper;
     }
 
-    public List<Book> findAll() {
-        return bookMapper.findAll();
+    public List<Book> findAll(String category) {
+        return bookMapper.findAll(category);
     }
 
     @Override

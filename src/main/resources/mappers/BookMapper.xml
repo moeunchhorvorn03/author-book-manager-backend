@@ -16,7 +16,8 @@
             cover_image AS coverImage,
             description,
             is_best_seller AS isBestSeller
-        FROM books;
+        FROM books
+        WHERE #{category} = 'All' OR category = #{category};
     </select>
     <select id="findById">
         SELECT

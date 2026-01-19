@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BookService {
 
-    List<Book> findAll();
+    List<Book> findAll(String category);
 
     Book findById(Long id);
 

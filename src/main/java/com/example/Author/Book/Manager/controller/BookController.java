@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/create")
 public class BookController {
 
     private final BookService bookService;
@@ -18,10 +18,16 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping
-    public List<Book> getAll() {
-        return bookService.findAll();
+    @PostMapping("/search")
+    public List<Book> searchBook(@RequestBody Book filter) {
+        String category = filter.getCategory();
+        return bookService.findAll(category);
     }
+
+//    @GetMapping
+//    public List<Book> getAll() {
+//        return bookService.findAll();
+//    }
 
     @GetMapping("/{id}")
     public Book get(@PathVariable Long id) {
