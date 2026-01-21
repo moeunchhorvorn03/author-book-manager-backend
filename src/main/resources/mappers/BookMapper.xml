@@ -15,7 +15,8 @@
             category,
             cover_image AS coverImage,
             description,
-            is_best_seller AS isBestSeller
+            is_best_seller AS isBestSeller,
+            review
         FROM books
         WHERE #{category} = 'All' OR category = #{category};
     </select>

@@ -30,4 +30,6 @@ public class Book {
     private String description;
 
     private boolean is_best_seller;
+
+    private Long review;
 }
