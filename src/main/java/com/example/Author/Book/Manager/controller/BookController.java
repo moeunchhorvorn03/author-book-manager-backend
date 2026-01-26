@@ -18,17 +18,6 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PostMapping("/search")
-    public List<Book> searchBook(@RequestBody Book filter) {
-        String category = filter.getCategory();
-        return bookService.findAll(category);
-    }
-
-//    @GetMapping
-//    public List<Book> getAll() {
-//        return bookService.findAll();
-//    }
-
     @GetMapping("/{id}")
     public Book get(@PathVariable Long id) {
         return bookService.findById(id);

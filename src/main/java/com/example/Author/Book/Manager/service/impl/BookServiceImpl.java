@@ -1,5 +1,6 @@
 package com.example.Author.Book.Manager.service.impl;
 
+import com.example.Author.Book.Manager.dto.BookDTO;
 import com.example.Author.Book.Manager.mapper.BookMapper;
 import com.example.Author.Book.Manager.model.Book;
 import com.example.Author.Book.Manager.service.BookService;
@@ -20,8 +21,8 @@ public class BookServiceImpl implements BookService {
         this.bookMapper = bookMapper;
     }
 
-    public List<Book> findAll(String category) {
-        return bookMapper.findAll(category);
+    public List<Book> findAll(BookDTO filter) {
+        return bookMapper.findAll(filter);
     }
 
     @Override

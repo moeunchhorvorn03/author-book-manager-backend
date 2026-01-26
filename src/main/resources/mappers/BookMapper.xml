@@ -5,19 +5,20 @@
 <mapper namespace="com.example.Author.Book.Manager.mapper.BookMapper">
     <select id="findAll">
         SELECT
-            id,
-            title,
-            author_id AS authorId,
-            published_year AS publishedYear,
-            author,
-            price,
-            rating,
-            category,
-            cover_image AS coverImage,
-            description,
-            is_best_seller AS isBestSeller,
-            review
+            books.id,
+            books.title,
+            books.author_id AS authorId,
+            books.published_year AS publishedYear,
+            authors.name AS author,
+            books.price,
+            books.rating,
+            books.category,
+            books.cover_image AS coverImage,
+            books.description,
+            books.is_best_seller AS isBestSeller,
+            books.review
         FROM books
+        JOIN authors ON books.author_id = authors.id
         WHERE #{category} = 'All' OR category = #{category};
     </select>
     <select id="findById">

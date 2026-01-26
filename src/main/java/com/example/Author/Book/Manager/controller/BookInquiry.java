@@ -1,5 +1,6 @@
 package com.example.Author.Book.Manager.controller;
 
+import com.example.Author.Book.Manager.dto.BookDTO;
 import com.example.Author.Book.Manager.model.Book;
 import com.example.Author.Book.Manager.service.BookService;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,8 @@ public class BookInquiry {
         this.bookService = bookService;
     }
 
-    @PostMapping
-    public List<Book> searchBook(@RequestBody Book filter) {
-        String category = filter.getCategory();
-        return bookService.findAll(category);
+    @PostMapping("/filter")
+    public List<Book> searchBook(@RequestBody BookDTO filter) {
+        return bookService.findAll(filter);
     }
 }
