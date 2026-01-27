@@ -19,7 +19,12 @@
             books.review
         FROM books
         JOIN authors ON books.author_id = authors.id
-        WHERE #{category} = 'All' OR category = #{category};
+        WHERE (#{category} = 'All' OR category = #{category})
+        AND (
+            books.title ILIKE CONCAT('%', #{searchValue}, '%')
+            OR authors.name ILIKE CONCAT('%', #{searchValue}, '%')
+            OR books.description ILIKE CONCAT('%', #{searchValue}, '%')
+        );
     </select>
     <select id="findById">
         SELECT

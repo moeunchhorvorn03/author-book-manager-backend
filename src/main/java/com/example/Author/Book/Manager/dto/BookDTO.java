@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BookDTO {
     private String category;
+
+    private String searchValue;
 }
