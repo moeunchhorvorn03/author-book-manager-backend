@@ -6,19 +6,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/create")
-public class BookController {
+@RequestMapping("/books")
+public class BookCreate {
 
     private final BookService bookService;
 
-    public BookController(BookService bookService) {
+    public BookCreate(BookService bookService) {
         this.bookService = bookService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<String> create(@RequestBody Book book) {
         try {
             bookService.insert(book);
@@ -28,18 +26,5 @@ public class BookController {
         } catch (Exception error) {
             throw new Error(error);
         }
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Book book) {
-        book.setId(id);
-        bookService.update(book);
-        return ResponseEntity.ok("Book updated successfully");
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
-        bookService.delete(id);
-        return ResponseEntity.ok("The book has been deleted");
     }
 }

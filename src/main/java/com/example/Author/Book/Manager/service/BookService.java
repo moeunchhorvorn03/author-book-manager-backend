@@ -5,12 +5,13 @@ import com.example.Author.Book.Manager.model.Book;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BookService {
 
     List<Book> findAll(BookDTO filter);
 
-    Book findById(Long id);
+    Optional<Book> findById(Long id);
 
     void insert(Book book);
 

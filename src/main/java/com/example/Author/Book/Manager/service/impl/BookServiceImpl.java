@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -26,18 +27,15 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findById(Long id) {
+    public Optional<Book> findById(Long id) {
         try {
-            Book book = bookMapper.findById(id);
-            if (book == null) {
-                throw new ResponseStatusException(
-                        HttpStatus.NOT_FOUND,
-                        "Book with ID " + id + " not found"
-                );
-            }
-            return book;
+            return Optional.ofNullable(bookMapper.findById(id));
         } catch (DataAccessException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Database error: " + e.getMessage(), e);
+            throw new ResponseStatusException(
+                    HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Database error: " + e.getMessage(),
+                    e
+            );
         }
     }
 

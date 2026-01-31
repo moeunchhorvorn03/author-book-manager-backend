@@ -28,25 +28,49 @@
     </select>
     <select id="findById">
         SELECT
-            id,
-            title,
-            author_id AS authorId,
-            published_year AS publishedYear
-        FROM books WHERE id = #{id};
+            books.id,
+            books.title,
+            books.author_id AS authorId,
+            books.published_year AS publishedYear,
+            authors.name AS author,
+            books.price,
+            books.rating,
+            books.category,
+            books.cover_image AS coverImage,
+            books.description,
+            books.is_best_seller AS isBestSeller,
+            books.review
+        FROM books
+        JOIN authors ON books.author_id = authors.id
+        WHERE books.id = #{id};
     </select>
     <insert id="insert">
         INSERT INTO books
-        (
-            title,
-            author_id,
-            published_year
-        )
-        VALUES
-        (
-            #{title},
-            #{authorId},
-            #{publishedYear}
-        )
+            (
+                title,
+                author_id,
+                published_year,
+                price,
+                rating,
+                category,
+                cover_image,
+                description,
+                is_best_seller,
+                review
+            )
+        values
+            (
+                #{title},
+                #{authorId},
+                #{publishedYear},
+                #{price},
+                #{rating},
+                #{category},
+                #{coverImage},
+                #{description},
+                #{isBestSeller},
+                #{review}
+            );
     </insert>
     <update id="update">
         UPDATE books SET published_year=#{publishedYear}, title=#{title}, author_id=#{authorId} where id=#{id}
