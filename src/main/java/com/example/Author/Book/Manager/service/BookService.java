@@ -2,7 +2,6 @@ package com.example.Author.Book.Manager.service;
 
 import com.example.Author.Book.Manager.dto.BookDTO;
 import com.example.Author.Book.Manager.model.Book;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;

@@ -6,7 +6,6 @@ import com.example.Author.Book.Manager.model.Book;
 import com.example.Author.Book.Manager.service.BookService;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
