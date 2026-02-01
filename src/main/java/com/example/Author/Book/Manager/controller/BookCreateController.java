@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/books")
-public class BookCreate {
+public class BookCreateController {
 
     private final BookService bookService;
 
-    public BookCreate(BookService bookService) {
+    public BookCreateController(BookService bookService) {
         this.bookService = bookService;
     }
 

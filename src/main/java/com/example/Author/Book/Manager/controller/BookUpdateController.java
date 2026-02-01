@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/update")
-public class BookUpdate {
+public class BookUpdateController {
 
     private final BookService bookService;
 
-    public BookUpdate(BookService bookService) {
+    public BookUpdateController(BookService bookService) {
         this.bookService = bookService;
     }
 

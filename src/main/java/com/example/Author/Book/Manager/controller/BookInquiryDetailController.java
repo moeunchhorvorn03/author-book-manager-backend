@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/books")
-public class BookInquiryDetail {
+public class BookInquiryDetailController {
 
     private final BookService bookService;
 
-    public BookInquiryDetail(BookService bookService) {
+    public BookInquiryDetailController(BookService bookService) {
         this.bookService = bookService;
     }
 

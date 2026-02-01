@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-public class BookInquiry {
+public class BookInquiryController {
 
     private final BookService bookService;
 
-    public BookInquiry(BookService bookService) {
+    public BookInquiryController(BookService bookService) {
         this.bookService = bookService;
     }
 
