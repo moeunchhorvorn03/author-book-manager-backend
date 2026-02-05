@@ -3,21 +3,20 @@ package com.example.Author.Book.Manager.service.impl;
 import com.example.Author.Book.Manager.mapper.UserMapper;
 import com.example.Author.Book.Manager.model.User;
 import com.example.Author.Book.Manager.service.UserService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
-
-    public UserServiceImpl(UserMapper userMapper, PasswordEncoder passwordEncoder) {
-        this.userMapper = userMapper;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Override
     public Optional<User> findByEmail(String email) {

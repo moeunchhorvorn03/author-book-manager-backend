@@ -4,6 +4,9 @@ import com.example.Author.Book.Manager.dto.BookDTO;
 import com.example.Author.Book.Manager.mapper.BookMapper;
 import com.example.Author.Book.Manager.model.Book;
 import com.example.Author.Book.Manager.service.BookService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -13,13 +16,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
     private final BookMapper bookMapper;
-
-    public BookServiceImpl(BookMapper bookMapper) {
-        this.bookMapper = bookMapper;
-    }
 
     public List<Book> findAll(BookDTO filter) {
         return bookMapper.findAll(filter);
